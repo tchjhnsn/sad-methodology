@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Obsidian (this repo doesn't live in an Obsidian vault, but shield against accidental drops)
+.obsidian/
+
+# Node (not used here, but shield against future tooling additions)
+node_modules/
+dist/
+build/
