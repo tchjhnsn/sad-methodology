@@ -2,6 +2,31 @@
 
 All notable changes to SAD as published in this repository. The canonical methodology lives at [methodology/SAD.md](./methodology/SAD.md); the repo versions semantically.
 
+## [3.2.0] — 2026-05-13
+
+Methodology evolution surfaced through the working application of SAD v3 to the Polity-app V1 build. Five additions; three pending decisions surfaced for the methodology community.
+
+### Added
+
+- **Phase 1B-Final · Articulation Closure** as a named phase between Phase 1B Final Review and Phase 2 Implementation. Documents the workflow, deliverables, and exit criteria for occupying the boundary until a cross-spec gap audit returns clean.
+- **`skills/articulation-closure/SKILL.md`** — capability-skill for running the articulation closure workflow. Names the polity-app reference implementation as the worked example.
+- **`skills/build-roadmap/SKILL.md`** — capability-skill for authoring the build roadmap deliverable that articulation closure produces.
+- **`skills/version-identity/SKILL.md`** — capability-skill for the version-identity discipline (one new sub-persona per version, foreshadowing, brand continuity invariants).
+- **`methodology/lifecycle-overview-2026-05-13.html`** — visual that shows the full SAD pipeline (Articulation → Build → Ship) with sub-phase granularity and the bridge from Phase 1B-Final to autonomous execution. Pairs with the existing `architecture.svg` (which is the static figure) — this HTML adds the operational where-we-are layer.
+- **`methodology/amendments/v3.2-2026-05-13.md`** — amendment doc consolidating the new disciplines: the Ralph Wiggum test (articulation quality bar), functional completion conditions (named user behavior, not code structure), autonomous-execution adopted from the community (the Ralph loop tradition, including Anthropic's `ralph-wiggum` claude-code plugin), bundled-commit hygiene, and the lockfile-with-package.json corollary.
+
+### Surfaced (pending decisions)
+
+These are flagged in v3.2 but not yet committed to the canonical methodology:
+
+- **HTML vs. Obsidian-hygiene tension** — deliverables shipped as HTML lose Templater/Dataview/wikilink workflows. Five options surfaced; decision pending.
+- **Brand-load-bearing assets must be explicitly loaded** — fonts, color tokens, logos cannot depend on system cascade. Encoded as a v3.2+ rule.
+- **Per-deliverable explicit vs. implicit articulation** — if a deliverable is reachable through a higher-level artifact (sitemap, brand voice, content models, retrospective sweep), explicit per-deliverable authorship is optional. The discipline is *no silent absence*.
+
+### Methodology positioning
+
+- **Autonomous execution is adopted from the community, not authored here.** SAD's contribution is the articulation precondition; the executor is the Ralph loop tradition. See `methodology/amendments/v3.2-2026-05-13.md` §4 for the rationale and the community-survey rationale.
+
 ## [3.0.0] — 2026-04-24
 
 Initial public release of SAD v3.

@@ -31,10 +31,16 @@ sad-methodology/
 │   ├── walkthrough.md           ← 10-minute extended walk-through
 │   ├── onepager.md              ← 30-second summary
 │   ├── architecture.svg         ← detailed static lifecycle figure
-│   └── onepager-workflow.svg    ← one-pager's simple phase-pipeline figure
+│   ├── onepager-workflow.svg    ← one-pager's simple phase-pipeline figure
+│   ├── lifecycle-overview-2026-05-13.html ← Articulation → Build → Ship visual (v3.2)
+│   └── amendments/
+│       └── v3.2-2026-05-13.md   ← Articulation Closure as named phase + Ralph loop adoption
 ├── skills/
-│   ├── time-awareness/SKILL.md       ← small capability-skill that grounds sessions in real-world time
-│   └── session-capture/SKILL.md      ← auto-captures predecessor session context
+│   ├── time-awareness/SKILL.md       ← grounds sessions in real-world time
+│   ├── session-capture/SKILL.md      ← auto-captures predecessor session context
+│   ├── articulation-closure/SKILL.md ← runs Phase 1B-Final · Articulation Closure (v3.2)
+│   ├── build-roadmap/SKILL.md        ← authors the build roadmap deliverable (v3.2)
+│   └── version-identity/SKILL.md     ← version-identity discipline + foreshadowing (v3.2)
 └── references/
     ├── raw-source-taxonomy.md        ← controlled vocabulary for raw layer inputs
     ├── entity-profile-schema.md      ← frontmatter schema for entity profiles
