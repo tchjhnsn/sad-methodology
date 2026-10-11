@@ -1,0 +1,9 @@
+---
+import Base from "../../layouts/Base.astro";
+import { byType, url } from "../../lib/docs";
+const rs = await byType("research");
+---
+<Base title="Research">
+  <h1>Research</h1>
+  <ul>{rs.map((r) => <li><a href={url(r)}>{r.data.description ?? r.id}</a></li>)}</ul>
+</Base>

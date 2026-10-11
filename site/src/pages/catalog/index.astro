@@ -1,0 +1,27 @@
+---
+import Base from "../../layouts/Base.astro";
+import { byType, url, assumed, list } from "../../lib/docs";
+const ms = (await byType("catalog-methodology")).sort((a, b) => String(a.data.domain).localeCompare(String(b.data.domain)) || String(a.data.name).localeCompare(String(b.data.name)));
+const domains = [...new Set(ms.map((m) => String(m.data.domain).split("/")[0]))];
+---
+<Base title="Methodology catalog">
+  <h1>Methodology catalog</h1>
+  <p>Each entry says when it fits and, as importantly, when it does not. Candidates are listed but not yet researched.</p>
+  <label>Domain <select id="dom"><option value="">All</option>{domains.map((d) => <option>{d}</option>)}</select></label>
+  <table>
+    <thead><tr><th>Methodology</th><th>Domain</th><th>Family</th><th>State</th><th>Source of truth</th><th>Unfit when</th></tr></thead>
+    <tbody>
+      {ms.map((m) => (
+        <tr data-domain={String(m.data.domain).split("/")[0]}>
+          <td><a href={url(m)}>{m.data.name}</a><br /><span class="muted">{assumed(m)}</span></td>
+          <td>{m.data.domain}</td><td>{m.data.family}</td><td><span class="tag">{m.data.lifecycle}</span></td>
+          <td>{m.data["source-of-truth"]}</td><td>{list(m.data["unfit-when"])}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  <script>
+    const sel = document.getElementById("dom") as HTMLSelectElement;
+    sel.addEventListener("change", () => document.querySelectorAll<HTMLElement>("tbody tr").forEach((r) => { r.hidden = !!sel.value && r.dataset.domain !== sel.value; }));
+  </script>
+</Base>

@@ -1,0 +1,54 @@
+---
+interface Props { title: string; description?: string }
+const { title, description } = Astro.props;
+const nav = [
+  ["/", "Home"],
+  ["/catalog/", "Methodologies"],
+  ["/artifact-types/", "Artifact types"],
+  ["/questions/", "Decision questions"],
+  ["/methodology/everything_ecosystem_domain_design_2026-10-10/", "Domain design"],
+  ["/research/", "Research"],
+];
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title} · Everything Ecosystem</title>
+  {description && <meta name="description" content={description} />}
+  <style is:global>
+    :root { --bg: #fbfaf7; --fg: #1d1c1a; --muted: #5f5b53; --line: #e2ded5; --accent: #2f5d50; --tag: #efece4; --warn: #8a5a00; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #151514; --fg: #ebe8e1; --muted: #a39e93; --line: #33312d; --accent: #8cc4b2; --tag: #24231f; --warn: #e0b35c; } }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 Georgia, "Iowan Old Style", serif; }
+    a { color: var(--accent); }
+    header, main, footer { max-width: 60rem; margin: 0 auto; padding: 0 16px; }
+    header { padding-top: 1.25rem; border-bottom: 1px solid var(--line); }
+    header .name { font-weight: 700; text-decoration: none; color: var(--fg); }
+    nav { display: flex; flex-wrap: wrap; gap: .25rem 1rem; margin: .5rem 0 1rem; font: 15px/1.4 system-ui, sans-serif; }
+    nav a { text-decoration: none; }
+    main { padding-top: 1.5rem; padding-bottom: 3rem; }
+    h1, h2, h3 { line-height: 1.25; }
+    table { border-collapse: collapse; width: 100%; font: 15px/1.45 system-ui, sans-serif; display: block; overflow-x: auto; }
+    th, td { border-bottom: 1px solid var(--line); padding: .4rem .5rem; text-align: left; vertical-align: top; }
+    code { background: var(--tag); padding: 0 .25rem; border-radius: 3px; font-size: .9em; }
+    pre { overflow-x: auto; background: var(--tag); padding: .75rem; border-radius: 4px; font-size: 14px; }
+    .tag { display: inline-block; background: var(--tag); border-radius: 3px; padding: 0 .4rem; font: 13px/1.6 system-ui, sans-serif; margin-right: .25rem; }
+    .muted { color: var(--muted); }
+    .notice { border-left: 3px solid var(--warn); padding: .25rem .75rem; font: 15px/1.5 system-ui, sans-serif; }
+    footer { border-top: 1px solid var(--line); padding: 1rem 16px 2rem; font: 14px/1.5 system-ui, sans-serif; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="name" href="/">Everything Ecosystem</a>
+    <nav>{nav.map(([href, label]) => <a href={href}>{label}</a>)}</nav>
+  </header>
+  <main><slot /></main>
+  <footer>
+    Under active development: much of what is here is marked <em>assumed</em>, not yet tested.
+    Text CC BY 4.0 · code and schemas Apache 2.0. Generated from the source vault; do not edit here.
+  </footer>
+</body>
+</html>

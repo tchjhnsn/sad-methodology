@@ -1,0 +1,16 @@
+---
+import Base from "../../layouts/Base.astro";
+import { byType, url } from "../../lib/docs";
+const order = (id: string) => ["M", "A", "K"].indexOf(id[0]) * 100 + Number(id.slice(1));
+const qs = (await byType("catalog-question")).sort((a, b) => order(String(a.data.id)) - order(String(b.data.id)));
+const sets = [["methodology", "Choosing a methodology for a system"], ["artifact-type", "Choosing an artifact type"], ["catalog", "Questions about the catalogs themselves"]];
+---
+<Base title="Decision questions">
+  <h1>Decision questions</h1>
+  <p>The quality of the question determines the quality of the answer. Every answer is marked tested or assumed; questions are versioned when refined.</p>
+  {sets.map(([s, title]) => (
+    <section><h2>{title}</h2>
+      <ol>{qs.filter((q) => q.data.set === s).map((q) => <li><a href={url(q)}>{q.data.id}</a> {q.data.text} {Number(q.data.version) > 1 && <span class="tag">v{q.data.version}</span>}</li>)}</ol>
+    </section>
+  ))}
+</Base>

@@ -1,0 +1,17 @@
+---
+import Base from "../../layouts/Base.astro";
+import { byType, url, list } from "../../lib/docs";
+const at = await byType("catalog-artifact-type");
+const groups = new Map<string, typeof at>();
+for (const a of at) { const q = String(a.data["question-answered"]); groups.set(q, [...(groups.get(q) ?? []), a]); }
+---
+<Base title="Artifact catalog">
+  <h1>Artifact catalog</h1>
+  <p>Several notations often answer the same question; choosing between them is itself a decision.</p>
+  {[...groups].sort(([a], [b]) => a.localeCompare(b)).map(([q, items]) => (
+    <section>
+      <h2>{q}</h2>
+      <ul>{items.map((a) => <li><a href={url(a)}>{a.data.name}</a> <span class="tag">{a.data.lifecycle}</span> <span class="muted">{list(a.data.formats)}</span></li>)}</ul>
+    </section>
+  ))}
+</Base>

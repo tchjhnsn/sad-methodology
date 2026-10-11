@@ -1,0 +1,28 @@
+---
+import Base from "../layouts/Base.astro";
+import { all, assumed, list } from "../lib/docs";
+import { render } from "astro:content";
+export async function getStaticPaths() {
+  return (await all()).map((d) => ({ params: { slug: d.id }, props: { d } }));
+}
+const { d } = Astro.props;
+const { Content } = await render(d);
+const f = d.data as any;
+const state = f.lifecycle ?? f.status ?? f["decision-status"];
+const isEntry = ["catalog-methodology", "catalog-artifact-type", "methodology-assignment"].includes(f.type);
+---
+<Base title={f.name ?? f.id ?? d.id} description={f.description}>
+  <p class="muted">
+    {state && <span class="tag">{state}</span>}
+    {f.domain && <span class="tag">{f.domain}</span>}
+    {f.family && <span class="tag">{f.family}</span>}
+    {isEntry && f.answers && <span>{assumed(d)}</span>}
+    {f["last-checked"] && <span> · last checked {f["last-checked"]}</span>}
+    {f.version && <span> · version {f.version}</span>}
+  </p>
+  {(f.evidence?.length || f["evidence-private-count"]) && (
+    <p class="muted">Evidence: {list(f.evidence)}{f["evidence-private-count"] ? `${f.evidence?.length ? "; " : ""}from ${f["evidence-private-count"]} private assignment${f["evidence-private-count"] > 1 ? "s" : ""}` : ""}</p>
+  )}
+  {f["unfit-when"]?.length > 0 && <p><strong>Unfit when:</strong> {list(f["unfit-when"])}</p>}
+  <Content />
+</Base>

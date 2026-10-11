@@ -1,0 +1,23 @@
+---
+import Base from "../layouts/Base.astro";
+import { all, byType } from "../lib/docs";
+const docs = await all();
+const ms = await byType("catalog-methodology"), at = await byType("catalog-artifact-type"), qs = await byType("catalog-question");
+const find = (p: string) => docs.find((d) => d.data["source-path"] === p);
+const domain = find("methodology/EVERYTHING_ECOSYSTEM_DOMAIN_DESIGN_2026-10-10.md");
+const treatise = find("philosophy/THE_EVERYTHING_ECOSYSTEM.md");
+const publicDesc = find("philosophy/METHODOLOGY_PUBLIC_DESCRIPTION.md");
+---
+<Base title="Home" description="A methodology for building with AI assistance across software, physical and business domains.">
+  <h1>Everything Ecosystem</h1>
+  <p class="notice">This methodology is under active development. Its central questions are open, and most catalog answers are marked <em>assumed</em> until evidence tests them.</p>
+  <ul>
+    {domain && <li><a href={`/${domain.id}/`}>Domain design</a>: the problem, principles, theses under test, concepts and invariants</li>}
+    <li><a href="/catalog/">Methodology catalog</a>: {ms.length} methodologies across software, physical and business development</li>
+    <li><a href="/artifact-types/">Artifact catalog</a>: {at.length} document and diagram types, grouped by the question each answers</li>
+    <li><a href="/questions/">Decision questions</a>: the {qs.length} questions asked before choosing</li>
+    <li><a href="/research/">Research</a>: what is known, and what is not</li>
+    {treatise && <li><a href={`/${treatise.id}/`}>The Everything Ecosystem</a>: the founding essay</li>}
+    {publicDesc && <li><a href={`/${publicDesc.id}/`}>Public description</a></li>}
+  </ul>
+</Base>
