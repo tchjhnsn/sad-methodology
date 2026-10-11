@@ -4,4 +4,4 @@ This folder holds the repository's original content: SAD (Specification-Anchored
 
 SAD is now one entry in a wider methodology, the **Everything Ecosystem**, which chooses a development methodology per system instead of applying one to everything. SAD corresponds to the *spec-anchored* entry in its methodology catalog (spec-driven family). The site in `site/` is the current publication; this folder is kept for history and is no longer maintained.
 
-The interactive SAD v3 lifecycle figure is served by GitHub Pages at `docs/sad-v3-lifecycle.html`; `docs/index.html` is now a notice pointing readers to the Everything Ecosystem. Once the new site has an address, the notice will link to it.
+The interactive SAD v3 lifecycle figure is served by GitHub Pages at `docs/sad-v3-lifecycle.html`; `docs/index.html` is now a notice pointing readers to the Everything Ecosystem. The notice links to the new site at https://sad-methodology.torianjohnson98.workers.dev/.
