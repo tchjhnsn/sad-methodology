@@ -1,0 +1,11 @@
+{
+  // Cloudflare Workers static assets: serve the Astro build output.
+  // Workers Builds settings: root directory `site`, build command `npm run build`, deploy command `npx wrangler deploy`.
+  "name": "sad-methodology",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
