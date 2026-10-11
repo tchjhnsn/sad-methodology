@@ -4,7 +4,7 @@ import { all, byType } from "../lib/docs";
 const docs = await all();
 const ms = await byType("catalog-methodology"), at = await byType("catalog-artifact-type"), qs = await byType("catalog-question");
 const find = (p: string) => docs.find((d) => d.data["source-path"] === p);
-const domain = find("methodology/EVERYTHING_ECOSYSTEM_DOMAIN_DESIGN_2026-10-10.md");
+const domain = find("methodology/EVERYTHING_ECOSYSTEM_DOMAIN_DESIGN_PUBLIC.md");
 const treatise = find("philosophy/THE_EVERYTHING_ECOSYSTEM.md");
 const publicDesc = find("philosophy/METHODOLOGY_PUBLIC_DESCRIPTION.md");
 ---
