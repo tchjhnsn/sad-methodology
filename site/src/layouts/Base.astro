@@ -1,12 +1,14 @@
 ---
+import { all } from "../lib/docs";
 interface Props { title: string; description?: string }
 const { title, description } = Astro.props;
+const domainDoc = (await all()).find((d) => d.data["source-path"] === "methodology/EVERYTHING_ECOSYSTEM_DOMAIN_DESIGN_2026-10-10.md");
 const nav = [
   ["/", "Home"],
   ["/catalog/", "Methodologies"],
   ["/artifact-types/", "Artifact types"],
   ["/questions/", "Decision questions"],
-  ["/methodology/everything_ecosystem_domain_design_2026-10-10/", "Domain design"],
+  ...(domainDoc ? [[`/${domainDoc.id}/`, "Domain design"]] : []),
   ["/research/", "Research"],
 ];
 ---
